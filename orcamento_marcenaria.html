@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Marcenaria WhatsApp</title>
+    <!-- Carregando Tailwind CSS para Estilização Responsiva e Moderna -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3e8; /* Fundo Creme Suave */
+        }
+        .wood-card {
+            background-color: #ffffff;
+            border: 2px solid #a0522d; /* Detalhe em Marrom/Sienna */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #d2b48c; /* Tan/Cor de Madeira Clara */
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #a0522d; /* Sienna/Cor de Madeira Escura */
+            color: #ffffff;
+        }
+        .btn-whatsapp {
+            background-color: #25d366; /* Verde WhatsApp */
+            transition: all 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+        }
+        /* Estilos de campo de entrada para dar um toque mais sólido */
+        .input-style {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            transition: border-color 0.2s;
+        }
+        .input-style:focus {
+            border-color: #a0522d;
+            outline: none;
+        }
+        /* O estilo table-ref foi mantido no CSS, mas o elemento HTML foi removido conforme solicitado. */
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- Card Principal e Layout Responsivo -->
+    <div class="w-full max-w-lg mx-auto wood-card rounded-xl p-6 md:p-8">
+
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">
+            Orçamento de Marcenaria
+        </h1>
+        <p class="text-center text-sm text-gray-600 mb-4">
+            Responda abaixo e gere sua proposta automática.
+        </p>
+
+        <!-- Banner de Promoção e Eventos ATUALIZADO -->
+        <div class="mb-8 p-6 bg-[#a0522d] text-white wood-card rounded-xl border-none shadow-xl transform transition duration-300 hover:scale-[1.01]">
+            <h2 class="text-2xl font-bold text-center mb-1">
+                ✨ OFERTAS ESPECIAIS EM PORTAS! ✨
+            </h2>
+            <p class="text-center text-sm font-semibold mb-3">
+                Substituição de Portas (Instalação inclusa): A partir de *R$ 199,00* por unidade!
+            </p>
+            <div class="border-t border-t-white/30 pt-3 text-center">
+                <p class="text-xs italic">
+                    Fabricação Sob Medida: Orçamento e Valores *a combinar*. Agende sua visita GRATUITA!
+                </p>
+                <span class="text-xs font-bold block mt-1">
+                    Próximo Evento: Workshop "DIY Portas" em 15/Dez. Reserve sua vaga!
+                </span>
+            </div>
+        </div>
+        <!-- FIM: Banner de Promoção e Eventos -->
+
+        <!-- Formulário de Inputs -->
+        <div id="orcamento-form" class="space-y-6">
+            
+            <!-- 1. Tipo de Serviço -->
+            <div>
+                <label for="servico" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Serviço:</label>
+                <select id="servico" class="input-style bg-white">
+                    <option value="fabricacao">Fabricação de Porta Nova</option>
+                    <option value="substituicao">Substituição/Troca de Porta</option>
+                </select>
+            </div>
+
+            <!-- 2. Tipo de Imóvel -->
+            <div>
+                <label for="imovel" class="block text-sm font-medium text-gray-700 mb-1">Onde será o serviço?</label>
+                <select id="imovel" class="input-style bg-white">
+                    <option value="casa">Casa/Residência</option>
+                    <option value="apartamento">Apartamento</option>
+                </select>
+            </div>
+
+            <!-- 3. Material/Acabamento (ATUALIZADO com novas opções) -->
+            <div>
+                <label for="material" class="block text-sm font-medium text-gray-700 mb-1">Material Preferencial:</label>
+                <select id="material" class="input-style bg-white">
+                    <option value="parana_copaiba">Porta Paraná Copaíba</option>
+                    <option value="parana_jequitiba">Porta Paraná Jequitibá</option>
+                    <option value="pinus">Porta Paraná Pinus</option>
+                    <option value="madeira_macica">Porta de Madeira Maciça</option>
+                    <option value="pronta_concrem">Porta Pronta Concrem</option>
+                    <option value="pronta_outras">Portas Prontas Outras</option>
+                </select>
+            </div>
+
+            <!-- 4. Endereço (para logística e visita) -->
+            <div>
+                <label for="endereco" class="block text-sm font-medium text-gray-700 mb-1">Endereço (Rua, Número, Bairro):</label>
+                <input type="text" id="endereco" class="input-style" placeholder="Ex: R. das Portas, 123, Centro">
+            </div>
+            
+            <!-- 5. Quantidade (ATUALIZADO para valor inicial 0 e min 0) -->
+            <div>
+                <label for="quantidade" class="block text-sm font-medium text-gray-700 mb-1">Quantidade de Portas:</label>
+                <input type="number" id="quantidade" min="0" value="0" class="input-style" placeholder="Ex: 2">
+            </div>
+
+            <!-- Botão de Cálculo -->
+            <button id="btn-calcular" class="btn-primary w-full py-3 rounded-xl text-lg font-semibold text-gray-900 shadow-md hover:shadow-xl">
+                Gerar Orçamento Agora
+            </button>
+        </div>
+
+        <!-- Área de Resultados (Oculta até o cálculo) -->
+        <div id="resultado-area" class="mt-8 pt-6 border-t border-gray-200 hidden">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Proposta Preliminar</h2>
+            
+            <div id="orcamento-exibido" class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 text-sm whitespace-pre-wrap">
+                <!-- O orçamento será inserido aqui -->
+            </div>
+
+            <!-- Botão WhatsApp -->
+            <button id="btn-whatsapp" class="btn-whatsapp w-full mt-4 py-3 rounded-xl text-lg font-semibold text-white flex items-center justify-center space-x-2 shadow-lg">
+                <!-- Ícone de WhatsApp (SVG simples e limpo) -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.932.54 3.74 1.48 5.308l-1.01 3.904 4.02-1.054A9.97 9.97 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zM17.5 15.6c-.22-.11-.7-.35-.8-.4c-.1-.05-.18-.08-.25.08-.07.16-.27.4-.33.48-.07.08-.13.08-.25.03-.6-.23-1.85-.7-2.78-1.72-.75-.85-1.25-1.87-1.4-2.12-.15-.24 0-.37.11-.48.1-.11.25-.26.33-.39.08-.13.11-.22.07-.3s-.25-.6-.35-.85c-.11-.24-.22-.2-.3-.2-.07-.07-.15-.12-.23-.12-.07 0-.17.03-.25.12-.08.08-.3.3-.3.73 0 .43.31.84.35.9.04.06.6.93.7 1.13.1.2.16.2.3.2.14 0 .93-.34 1.12-.41.19-.07.38-.13.43-.2.05-.07.16-.18.25-.28.09-.1.17-.2.25-.13.07.06.47.78.6 1.05.13.26.08.48.02.58-.06.1-.2.24-.4.36z"/>
+                </svg>
+                <span>Enviar Proposta via WhatsApp</span>
+            </button>
+            <p class="text-xs text-center text-gray-500 mt-2">
+                Você será redirecionado para o WhatsApp com a mensagem pré-preenchida.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Variáveis globais para configuração do Firebase (necessárias para o ambiente, mas não usadas para este app de simulação de orçamento)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : '';
+        
+        // --- Lógica de Orçamento Simulado ---
+
+        // Preços e Multiplicadores Base (Valores fictícios em Reais - R$)
+        const CONFIG = {
+            // Custo base de uma porta simples (agora Porta de Forramento - R$ 180,00)
+            PRECO_BASE_PORTA: 180.00,
+            MULTIPLICADORES: {
+                // Multiplicadores de Material
+                parana_copaiba: 1.8, // Mais nobre e de alto valor (R$ 324,00)
+                parana_jequitiba: 1.6, // Nobre, valor alto (R$ 288,00)
+                pinus: 0.8, // Econômico, baixo custo (R$ 144,00)
+                madeira_macica: 1.4, // Custo médio-alto (R$ 252,00)
+                pronta_concrem: 0.9, // Porta pronta, custo ligeiramente abaixo do base (R$ 162,00)
+                pronta_outras: 0.85, // Porta pronta genérica, mais econômica (R$ 153,00)
+
+                // Multiplicadores de Serviço
+                fabricacao: 1.0,
+                substituicao: 1.25, // Custo extra para remoção e descarte (R$ 225,00)
+
+                // Multiplicadores de Imóvel (Logística e Complexidade)
+                casa: 1.05,
+                apartamento: 1.15, // Mais complexo para entrega e montagem
+            },
+        };
+
+        const elements = {
+            servico: document.getElementById('servico'),
+            imovel: document.getElementById('imovel'),
+            material: document.getElementById('material'),
+            endereco: document.getElementById('endereco'),
+            quantidade: document.getElementById('quantidade'),
+            btnCalcular: document.getElementById('btn-calcular'),
+            resultadoArea: document.getElementById('resultado-area'),
+            orcamentoExibido: document.getElementById('orcamento-exibido'),
+            btnWhatsapp: document.getElementById('btn-whatsapp'),
+        };
+
+        // Variável para armazenar o orçamento gerado e enviá-lo pelo WhatsApp
+        let orcamentoFinalText = "";
+
+        /**
+         * Calcula o orçamento total com base nos inputs do usuário e nas regras de negócio simuladas.
+         */
+        function calcularOrcamento() {
+            const servico = elements.servico.value;
+            const imovel = elements.imovel.value;
+            const material = elements.material.value;
+            const endereco = elements.endereco.value.trim() || 'Não Informado';
+            const quantidade = parseInt(elements.quantidade.value);
+
+            // Validação simples (agora permite quantidade 0, mas verifica números negativos ou inválidos)
+            if (isNaN(quantidade) || quantidade < 0) {
+                exibirMensagem('Erro: A quantidade de portas deve ser um número inteiro positivo ou zero.', 'text-red-600 border-red-300');
+                return;
+            }
+            if (endereco === 'Não Informado' || endereco.length < 5) {
+                exibirMensagem('Atenção: Por favor, preencha um endereço válido para que possamos calcular a logística.', 'text-yellow-700 border-yellow-300');
+                return;
+            }
+
+            // 1. Custo Base (R$ 180,00)
+            let custoUnitario = CONFIG.PRECO_BASE_PORTA;
+            
+            // 2. Aplica Multiplicadores
+            custoUnitario *= CONFIG.MULTIPLICADORES[material] || 1.0;
+            custoUnitario *= CONFIG.MULTIPLICADORES[servico] || 1.0;
+            custoUnitario *= CONFIG.MULTIPLICADORES[imovel] || 1.0;
+
+            // 3. Calcula o Valor Total (Removendo o desconto automático da promoção anterior)
+            const valorTotal = custoUnitario * quantidade;
+
+            // --- Formatação e Exibição ---
+
+            const servicoText = elements.servico.options[elements.servico.selectedIndex].text;
+            const imovelText = elements.imovel.options[elements.imovel.selectedIndex].text;
+            const materialText = elements.material.options[elements.material.selectedIndex].text;
+            const dataAtual = new Date().toLocaleDateString('pt-BR');
+            const valorTotalFormatado = valorTotal.toFixed(2).replace('.', ',');
+
+            // Se a quantidade for 0, o orçamento não deve mostrar R$ 0,00 no total
+            let totalDisplay = `R$ ${valorTotalFormatado}`;
+            let notaAdicional = `Este é um orçamento preliminar. O valor final pode variar após a medição e avaliação técnica no local.`;
+            
+            if (quantidade === 0) {
+                totalDisplay = 'Aguardando Quantidade';
+                notaAdicional = 'A quantidade de portas é zero. Para um orçamento final, por favor, defina a quantidade desejada.';
+            } else if (servico === 'fabricacao') {
+                totalDisplay = 'VALOR A COMBINAR';
+                notaAdicional = 'O valor da fabricação sob medida é *a combinar* após a visita técnica. Este valor estimado é apenas uma referência de custo base. Por favor, confirme se gostaria de agendar uma visita técnica.';
+            }
+
+
+            orcamentoFinalText = `
+*PROPOSTA DE ORÇAMENTO DE MARÇENARIA*
+Data: ${dataAtual}
+----------------------------------------
+*Detalhes da Demanda:*
+- Serviço: ${servicoText}
+- Local: ${imovelText}
+- Material: ${materialText}
+- Quantidade de Portas: ${quantidade} un.
+- Endereço para Visita: ${endereco}
+
+*Cálculo Estimado (Simulado):*
+- Custo Unitário Estimado: R$ ${custoUnitario.toFixed(2).replace('.', ',')}
+- Valor Bruto (Referência): R$ ${(custoUnitario * quantidade).toFixed(2).replace('.', ',')}
+
+*VALOR TOTAL ESTIMADO:*
+${totalDisplay}
+----------------------------------------
+*Nota:* ${notaAdicional}
+            `.trim();
+
+            exibirMensagem(orcamentoFinalText, 'text-gray-800 bg-gray-50 border-gray-200');
+            elements.resultadoArea.classList.remove('hidden');
+        }
+
+        /**
+         * Exibe a mensagem de resultado/erro na área de exibição.
+         * @param {string} message O conteúdo a ser exibido.
+         * @param {string} classes Classes Tailwind para estilização (e.g., cor de texto).
+         */
+        function exibirMensagem(message, classes) {
+            elements.orcamentoExibido.innerHTML = message;
+            // Remove classes antigas e aplica as novas
+            elements.orcamentoExibido.className = 'bg-gray-50 p-4 rounded-lg border text-sm whitespace-pre-wrap ' + classes;
+        }
+
+        /**
+         * Constrói e abre o link do WhatsApp com o orçamento preenchido.
+         */
+        function enviarWhatsApp() {
+            if (orcamentoFinalText) {
+                // Número do usuário: 85986611840 (com código do país 55 e DDD 85)
+                const whatsappNumber = "5585986611840"; // SEU NOVO NÚMERO AQUI
+                const encodedText = encodeURIComponent(orcamentoFinalText);
+                
+                // Abre a URL do WhatsApp Web/App
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+                window.open(whatsappUrl, '_blank');
+
+            } else {
+                exibirMensagem('Por favor, gere um orçamento antes de enviar via WhatsApp.', 'text-red-600 border-red-300');
+            }
+        }
+
+        // --- Adicionar Listeners de Eventos ---
+
+        elements.btnCalcular.addEventListener('click', calcularOrcamento);
+        elements.btnWhatsapp.addEventListener('click', enviarWhatsApp);
+        
+        // Garante que o input de quantidade só permite números inteiros positivos ou zero
+        elements.quantidade.addEventListener('input', (e) => {
+            let value = e.target.value;
+            value = value.replace(/[^0-9]/g, '');
+            if (value === "") value = 0; // Se apagar, volta para 0
+            e.target.value = parseInt(value, 10);
+        });
+
+    </script>
+</body>
+</html>
