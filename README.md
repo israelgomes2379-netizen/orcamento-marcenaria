@@ -1,4 +1,3 @@
-# orcamento-marcenaria
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -411,8 +410,8 @@ Por favor, confirme se gostaria de agendar uma visita técnica.
             `.trim();
 
             
-            const whatsappNumber = "5585986611840"; // INSIRA SEU NÚMERO AQUI (Código País + DDD + Número)
             // Substitua 'SEUNUMERO' pelo número de telefone da sua empresa (incluindo código do país, ex: 5521999998888)
+            const whatsappNumber = "5500000000000"; // INSIRA SEU NÚMERO AQUI (Código País + DDD + Número)
             const encodedText = encodeURIComponent(orcamentoFinalText);
             
             // Abre a URL do WhatsApp Web/App
@@ -450,3 +449,4 @@ Por favor, confirme se gostaria de agendar uma visita técnica.
     </script>
 </body>
 </html>
+
